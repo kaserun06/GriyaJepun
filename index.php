@@ -90,21 +90,12 @@
             </div>
         </section>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
+
     <div id="copyright">
         <div class="wrapper">
             &copy; 2022. <b>Griya Jepun</b>All Rights Reserved.
         </div>
     </div>
-    
-
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

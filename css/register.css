@@ -1,0 +1,10 @@
+body#register{
+    background: linear-gradient(296.82deg, #D4F2CD 48.96%, #FFFFFF 100%);
+}
+.main-div {
+    background: #4E944F;
+    border-radius: 10px;
+    margin: 50px auto 30px;
+    max-width: 80%;
+    padding: 1px 70px 70px 71px;
+}
