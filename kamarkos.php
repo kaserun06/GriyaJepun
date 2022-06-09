@@ -33,7 +33,7 @@
 <tbody>
 
 <?php 
-    $sql = "SELECT * FROM tbl_kos WHERE flag = 1";
+    $sql = "SELECT * FROM tbl_kos WHERE kelas IN('Reguler','Menengah','Komplit')";
     $query = mysqli_query($con, $sql);
     $no = 1;
     while ($data = mysqli_fetch_assoc($query)){
