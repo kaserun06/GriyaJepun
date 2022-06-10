@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Data Pembayaran</title>
+<title>Loyal member</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +18,7 @@
 ?>
 
 <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-    <h3>Data Pembayaran</h3>
+    <h3>Data Transaksi</h3>
 <hr>
 
 <table class="table table-stripped table-hover datatab" align="center">
@@ -29,15 +29,17 @@
             <th>Kode Kamar</th>
             <th>ID Fasilitas</th>
             <th>Total Bayar</th>
-            <th> Status</th>
-            <th>Aksi</th>                  
+            <th> Status</th> 
+            <th> Tanggal Reservasi</th>
+            <th> Lama Inap</th>
+            <th> Alamat</th>   
         </tr>
     </thead>  
     <tbody>
     <?php
         $nomor=1;
 
-        $sql = "SELECT * FROM tbl_pembayaran WHERE id_fasilitas BETWEEN 001 AND 003";
+        $sql = "SELECT * FROM tbl_pembayaran INNER JOIN tbl_reservasi ON tbl_pembayaran.id_reservasi=tbl_reservasi.id_reservasi";
         $query = mysqli_query($con, $sql);
         while($data = mysqli_fetch_assoc($query)){
         ?>
@@ -48,10 +50,9 @@
             <td><?php echo $data['id_fasilitas']; ?></td>
             <td>Rp. <?php echo $data['total_bayar']; ?></td>
             <td><?php echo $data['status']; ?></td>
-            <td>
-                <a href="proses_admin/prosesPembayaran.php?id=<?php echo $data['id_reservasi'] ?>" class="btn btn-success">Konfirm</a>
-            </td>
-            
+            <td><?php echo $data['tanggal_check_in']; ?></td>
+            <td><?php echo $data['lama_inap']; ?></td>
+            <td><?php echo $data['alamat']; ?></td>
         </tr>
         <?php $nomor++; ?>
         <?php } ?>

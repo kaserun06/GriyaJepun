@@ -4,7 +4,7 @@ include '../helper/connect.php';
 
 $id = $_GET["id"];
 
-$query = "UPDATE tbl_fasilitas SET flag = 0 WHERE id_fasilitas = $id";
+$query = "DELETE FROM tbl_fasilitas WHERE id_fasilitas = $id";
 
 if (mysqli_query($con, $query)) {
     header("Location:../fasilitas.php");

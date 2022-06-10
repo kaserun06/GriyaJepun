@@ -128,7 +128,7 @@ if(isset($_POST['submit'])){
                     <div class="alert alert-info">
                         <p>
                             Total yang harus dibayar Rp. <?php echo number_format($total_biaya); ?> <br>
-                            <strong>BANK BRI <br>1234-12-1234567-09-2<br> a.n. Hotelku</strong>
+                            <strong>BANK BCA <br>1234-12-1234567-09-2<br> a.n. Jepun</strong>
                         </p>
                     </div>
                 </div>
@@ -139,5 +139,6 @@ if(isset($_POST['submit'])){
             }
         ?>
     </form>
+    
 </body>
 </html>

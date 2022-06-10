@@ -21,6 +21,9 @@
 
 </head>
 <body>
+<?php
+    include 'helper/connect.php';
+?>
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -28,8 +31,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dashboard</p>
-
+                <p href="admin.php">Dashboard</p>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Insert</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -49,6 +51,9 @@
                     <a href="pelanggan.php" target="iframe_a">Data Pelanggan</a>    
                 </li>
                 <li>
+                    <a href="loyalMember.php" target="iframe_a">Loyality Customer</a>    
+                </li>
+                <li>
                     <a href="kamarkos.php" target="iframe_a">Data Kamar</a>
                 </li>
                 <li>
@@ -65,6 +70,9 @@
                 </li>
                 <li>
                     <a href="dataPembayaran.php" target="iframe_a">Data Pembayaran</a>
+                </li>
+                <li>
+                    <a href="infoTransaksi.php" target="iframe_a">Data Transaksi</a>
                 </li>
             </ul>
         </nav>
@@ -95,7 +103,15 @@
                     </div>
                 </div>
             </nav>
-            <h2>Selamat Datang, <?php echo $username; ?> <h2>
+            <h2>Selamat Datang, <?php echo $username; ?> Pendapatan Total Griya Jepun saat ini adalah
+            <?php 
+                $sql = "SELECT SUM(total_bayar) AS 'pendapatan' FROM tbl_pembayaran";
+                $query = mysqli_query($con, $sql);
+                while($data = mysqli_fetch_assoc($query)){
+                ?>
+                    <?php echo $data['pendapatan']; ?>
+                    <?php } ?>
+            <h2>    
             <div class="embed-responsive embed-responsive-21by9">
                     <iframe class="embed-responsive-item" name="iframe_a" style="border:none;" allowfullscreen></iframe>
                 </div>

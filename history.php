@@ -66,8 +66,7 @@ $username = $_SESSION["nama"];
                         <th>Nama Pemesan</th>
                         <th>Kamar</th>
                         <th>Fasilitas</th>
-                        <th>Tanggal Check In</th>
-                        <th>Tanggal Check Out</th>
+                        <th>Tanggal Reservasi</th>
                         <th>Lama inap</th>
                         <th>Total Bayar</th>
                         <th>Aksi</th>
@@ -79,7 +78,7 @@ $username = $_SESSION["nama"];
                     $nomor=1;
                     $id_pelanggan = $_SESSION["nama"];
 
-                    $sql = "select id_reservasi, nama_tamu, nama_kamar, fasilitas, tanggal_check_in, tanggal_check_out, lama_inap, total_biaya
+                    $sql = "SELECT CONCAT(tanggal_check_in,' ','Sampai',' ', tanggal_check_out) AS 'tanggalreservasi' ,id_reservasi, nama_tamu, nama_kamar, fasilitas, lama_inap, total_biaya
                     from tbl_kos, tbl_fasilitas, tbl_reservasi
                     where tbl_kos.kode_kamar = tbl_reservasi.kode_kamar
                     and tbl_fasilitas.id_fasilitas = tbl_reservasi.id_fasilitas and tbl_reservasi.flag=1 and nama_tamu='$id_pelanggan'";
@@ -91,8 +90,7 @@ $username = $_SESSION["nama"];
                         <td><?php echo $data['nama_tamu']; ?></td>
                         <td><?php echo $data['nama_kamar']; ?></td>
                         <td><?php echo $data['fasilitas']; ?></td>
-                        <td><?php echo $data['tanggal_check_in']; ?></td>
-                        <td><?php echo $data['tanggal_check_out']; ?></td>
+                        <td><?php echo $data['tanggalreservasi']; ?></td>
                         <td><?php echo $data['lama_inap']; ?></td>
                         <td>Rp. <?php echo $data['total_biaya']; ?></td>
                         <td>

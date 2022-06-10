@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Data Pembayaran</title>
+<title>Loyal member</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +18,7 @@
 ?>
 
 <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-    <h3>Data Pembayaran</h3>
+    <h3>Data Customer Loyal</h3>
 <hr>
 
 <table class="table table-stripped table-hover datatab" align="center">
@@ -29,15 +29,14 @@
             <th>Kode Kamar</th>
             <th>ID Fasilitas</th>
             <th>Total Bayar</th>
-            <th> Status</th>
-            <th>Aksi</th>                  
+            <th> Status</th>                  
         </tr>
     </thead>  
     <tbody>
     <?php
         $nomor=1;
 
-        $sql = "SELECT * FROM tbl_pembayaran WHERE id_fasilitas BETWEEN 001 AND 003";
+        $sql = "SELECT * FROM tbl_pembayaran GROUP BY nama_tamu HAVING SUM(total_bayar) = MAX(total_bayar)";
         $query = mysqli_query($con, $sql);
         while($data = mysqli_fetch_assoc($query)){
         ?>
@@ -48,10 +47,6 @@
             <td><?php echo $data['id_fasilitas']; ?></td>
             <td>Rp. <?php echo $data['total_bayar']; ?></td>
             <td><?php echo $data['status']; ?></td>
-            <td>
-                <a href="proses_admin/prosesPembayaran.php?id=<?php echo $data['id_reservasi'] ?>" class="btn btn-success">Konfirm</a>
-            </td>
-            
         </tr>
         <?php $nomor++; ?>
         <?php } ?>

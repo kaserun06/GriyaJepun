@@ -36,7 +36,7 @@
 <tbody>
 
 <?php 
-    $sql = "SELECT * FROM tbl_admin WHERE flag = 1";
+    $sql = "SELECT * FROM tbl_admin ORDER BY nama_karyawan ASC";
     $query = mysqli_query($con, $sql);
     $no = 1;
     while ($data = mysqli_fetch_assoc($query)){
