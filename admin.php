@@ -57,7 +57,7 @@
                     <a href="kamarkos.php" target="iframe_a">Data Kamar</a>
                 </li>
                 <li>
-                    <a href="Karyawan.php" target="iframe_a">Data Karyawan</a>
+                    <a href="karyawan.php" target="iframe_a">Data Karyawan</a>
                 </li>
                 <li>
                     <a href="fasilitas.php" target="iframe_a">Data Tipe Kamar</a>

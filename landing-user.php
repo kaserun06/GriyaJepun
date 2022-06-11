@@ -163,7 +163,7 @@
     <div class="container">
         <div class="tengah">
             <div class="kolom">
-                <img src="images/contact1.png">
+                <img src="images/contact.png">
             </div>
         </div>
     </div>
