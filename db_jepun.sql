@@ -183,16 +183,6 @@ INSERT INTO `tbl_login` (`id`, `nama`, `username`, `password`, `level`) VALUES
 (43, 'Miftahul Liana', 'liana', 'liana', 0),
 (44, 'Ezra Walian', 'ezra', 'walian', 0);
 
---
--- Triggers `tbl_login`
---
-DELIMITER $$
-CREATE TRIGGER `after_password_update` AFTER UPDATE ON `tbl_login` FOR EACH ROW BEGIN
-    INSERT INTO log_password_change (username, password_baru, password_lama, waktu) VALUES
-    (OLD.username, NEW.password, OLD.password, NOW()); 
-END$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -396,6 +386,16 @@ ALTER TABLE `tbl_reservasi`
   ADD CONSTRAINT `tbl_reservasi_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `tbl_kos` (`kode_kamar`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_reservasi_ibfk_3` FOREIGN KEY (`id_fasilitas`) REFERENCES `tbl_fasilitas` (`id_fasilitas`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
+
+--
+-- Triggers `tbl_login`
+--
+DELIMITER $$
+CREATE TRIGGER `after_password_update` AFTER UPDATE ON `tbl_login` FOR EACH ROW BEGIN
+    INSERT INTO log_password_change (username, password_baru, password_lama, waktu) VALUES
+    (OLD.username, NEW.password, OLD.password, NOW()); 
+END$$
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

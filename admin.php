@@ -74,6 +74,9 @@
                 <li>
                     <a href="infoTransaksi.php" target="iframe_a">Data Transaksi</a>
                 </li>
+                <li>
+                    <a href="user.php" target="iframe_a">User List</a>
+                </li>
             </ul>
         </nav>
 
