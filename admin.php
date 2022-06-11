@@ -103,13 +103,15 @@
                     </div>
                 </div>
             </nav>
-            <h2>Selamat Datang, <?php echo $username; ?> Pendapatan Total Griya Jepun saat ini adalah
+            <h2>Selamat Datang, <?php echo $username; ?></h2>
+            <br>
+            <h2>Pendapatan Total Griya Jepun saat ini adalah
             <?php 
                 $sql = "SELECT SUM(total_bayar) AS 'pendapatan' FROM tbl_pembayaran";
                 $query = mysqli_query($con, $sql);
                 while($data = mysqli_fetch_assoc($query)){
                 ?>
-                    <?php echo $data['pendapatan']; ?>
+                    <?php echo 'Rp. ' . number_format($data['pendapatan'], 0, '', '.'); ?>
                     <?php } ?>
             <h2>    
             <div class="embed-responsive embed-responsive-21by9">
