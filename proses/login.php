@@ -12,7 +12,7 @@
             # Create a connection to mysql database
             # mysql_connect parameter
             # mysql_connect(db_url, db_username, db_password, db_name)
-            $con = mysqli_connect("localhost", "root", "", "db_jepun");
+            $con = mysqli_connect(HOST,UNAME,PASS,DB);
 
             # Check connection to database
             if(!$con) {

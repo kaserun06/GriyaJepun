@@ -86,7 +86,7 @@
         </section>
         <section id="contact">
             <div class="kolom">
-                <img src="images/contact1.png">
+                <img src="images/contact.png">
             </div>
         </section>
     </div>
