@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_login`
+-- Table structure for table `log_password_change`
 --
 
-CREATE TABLE `log_login` (
+CREATE TABLE `log_password_change` (
   `log_id` int(25) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password_lama` varchar(50) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `log_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `log_login`
+-- Dumping data for table `log_password_change`
 --
 
-INSERT INTO `log_login` (`log_id`, `username`, `password_lama`, `password_baru`, `waktu`) VALUES
+INSERT INTO `log_password_change` (`log_id`, `username`, `password_lama`, `password_baru`, `waktu`) VALUES
 (1, 'admin', 'admin123', 'admin12', '2022-06-09 17:38:07');
 
 -- --------------------------------------------------------
@@ -183,20 +183,6 @@ INSERT INTO `tbl_login` (`id`, `nama`, `username`, `password`, `level`) VALUES
 (43, 'Miftahul Liana', 'liana', 'liana', 0),
 (44, 'Ezra Walian', 'ezra', 'walian', 0);
 
---
--- Triggers `tbl_login`
---
-DELIMITER $$
-CREATE TRIGGER `before_password_update` BEFORE UPDATE ON `tbl_login` FOR EACH ROW BEGIN
-    INSERT INTO log_login
-    set username = OLD.username,
-    password_baru=new.password,
-    password_lama=old.password,
-    waktu = NOW(); 
-END
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -293,9 +279,9 @@ INSERT INTO `tbl_reservasi` (`id_reservasi`, `nama_tamu`, `kode_kamar`, `id_fasi
 --
 
 --
--- Indexes for table `log_login`
+-- Indexes for table `log_password_change`
 --
-ALTER TABLE `log_login`
+ALTER TABLE `log_password_change`
   ADD PRIMARY KEY (`log_id`);
 
 --
@@ -354,9 +340,9 @@ ALTER TABLE `tbl_reservasi`
 --
 
 --
--- AUTO_INCREMENT for table `log_login`
+-- AUTO_INCREMENT for table `log_password_change`
 --
-ALTER TABLE `log_login`
+ALTER TABLE `log_password_change`
   MODIFY `log_id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -400,6 +386,16 @@ ALTER TABLE `tbl_reservasi`
   ADD CONSTRAINT `tbl_reservasi_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `tbl_kos` (`kode_kamar`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_reservasi_ibfk_3` FOREIGN KEY (`id_fasilitas`) REFERENCES `tbl_fasilitas` (`id_fasilitas`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
+
+--
+-- Triggers `tbl_login`
+--
+DELIMITER $$
+CREATE TRIGGER `after_password_update` AFTER UPDATE ON `tbl_login` FOR EACH ROW BEGIN
+    INSERT INTO log_password_change (username, password_baru, password_lama, waktu) VALUES
+    (OLD.username, NEW.password, OLD.password, NOW()); 
+END$$
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

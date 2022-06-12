@@ -1,7 +1,8 @@
 <?php
 // Connection Var
-define("HOST", "localhost"); // MySQL url
-define("UNAME", "id19076048_pbdjepun"); // MySQL's username
-define("PASS", ".SI26e3S67LHGOX"); // MySQL's password 
-define("DB", "id19076048_db_jepun"); // DB's name 
+define("HOST", "b72dwwamav0qiynn3pni-mysql.services.clever-cloud.com"); // MySQL url
+define("UNAME", "utzjqobl7etmx1op"); // MySQL username
+define("PASS", "RW5tRC5U4FQSQ2ZxUjPf"); // MySQL password 
+define("DB", "b72dwwamav0qiynn3pni"); // DB name 
+define("PORT", 3306); //MySQL port
 ?>
